@@ -9,6 +9,7 @@ const redirecterSchema = new Schema({
     type: String,
     required: true,
     unique: true,
+    index: true,
   },
   expiresAt: {
     type: Date,
