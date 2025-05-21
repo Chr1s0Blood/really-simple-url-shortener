@@ -1,0 +1,27 @@
+{
+  "name": "really-simple-url-shortener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.ts",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@9.15.6+sha1.79ab37c5c235b8ae4ef0f909e414ca8a89729010",
+  "devDependencies": {
+    "@types/node": "22",
+    "nodemon": "^3.1.10",
+    "pino-pretty": "^13.0.0",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "envalid": "^8.0.0",
+    "fastify": "^5.3.3",
+    "mongoose": "^8.15.0",
+    "pino": "^9.7.0"
+  }
+}
