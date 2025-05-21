@@ -1,6 +1,7 @@
 import fastify from "fastify";
 import { connectDatabase } from "./config/db.js";
 import { appEnv } from "./config/env.js";
+import appRouter from "./web/router.js";
 
 
 const server = fastify({
@@ -15,6 +16,8 @@ const server = fastify({
 });
 
 await connectDatabase();
+
+server.register(appRouter);
 
 server.listen({ port: appEnv.PORT, host: "0.0.0.0" }, (err) => {
   if (err) {
