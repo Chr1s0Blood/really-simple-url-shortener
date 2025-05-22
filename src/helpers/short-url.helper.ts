@@ -1,8 +1,8 @@
 import NanoId from "@/lib/nanoid.js";
 import type { FastifyReply, FastifyRequest } from "fastify";
 
-export default class ShortUrlHelper {
-  static validateShortUrlFromRequest(
+export default class ShortIdHelper {
+  static validateShortIdFromRequest(
     req: FastifyRequest,
     reply: FastifyReply,
     done: () => void

@@ -1,4 +1,4 @@
-import ShortUrlHelper from "@/helpers/short-url.helper.js";
+import ShortIdHelper from "@/helpers/short-url.helper.js";
 import type { FastifyInstance } from "fastify";
 import RedirecterController from "./controller.js";
 import UrlHelper from "@/helpers/url.helper.js";
@@ -11,7 +11,7 @@ export default function appRouter(fastify: FastifyInstance) {
   fastify.route({
     method: "GET",
     url: "/r/:shortId",
-    preValidation: ShortUrlHelper.validateShortUrlFromRequest,
+    preValidation: ShortIdHelper.validateShortIdFromRequest,
     handler: RedirecterController.redirect,
   });
 
