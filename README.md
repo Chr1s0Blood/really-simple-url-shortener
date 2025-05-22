@@ -25,3 +25,6 @@ MONGO_DB_NAME=rsus_app
 BASE_URL=http://localhost:6333
 ```
 6. Ok, agora sim você pode rodar seu projeto localmente... Se divirta! (talvez).
+```sh
+pnpm dev
+```
