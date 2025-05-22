@@ -1,21 +1,23 @@
-import { isNanoid } from "@/lib/nanoid.js";
+import NanoId from "@/lib/nanoid.js";
 import type { FastifyReply, FastifyRequest } from "fastify";
 
-export function validateShortUrlFromRequest (req: FastifyRequest, reply: FastifyReply, done: () => void) {
-    const params = req.params as { shortUrl?: string };
-    if (!params?.shortUrl) {
-        return reply.status(400).send({ error: "shortUrl is required!" });
+export default class ShortUrlHelper {
+  static validateShortUrlFromRequest(
+    req: FastifyRequest,
+    reply: FastifyReply,
+    done: () => void
+  ) {
+    const params = req.params as { shortId?: string };
+    if (!params?.shortId) {
+      return reply.status(400).send({ error: "shortId is required!" });
     }
 
-    const shortUrl = params.shortUrl
+    const shortPathname = params.shortId;
 
-    if (shortUrl.length !== 10) {
-        return reply.status(400).send({ error: "shortUrl must be 10 characters long!" });
-    }
-
-    if (!isNanoid(shortUrl)) {
-        return reply.status(400).send({ error: "shortUrl must be valid!" });
+    if (!NanoId.isNanoid(shortPathname)) {
+      return reply.status(400).send({ error: "shortId must be valid!" });
     }
 
     done();
+  }
 }

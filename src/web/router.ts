@@ -1,6 +1,7 @@
-import { validateShortUrlFromRequest } from "@/helpers/short-url.helper.js";
+import ShortUrlHelper from "@/helpers/short-url.helper.js";
 import type { FastifyInstance } from "fastify";
-import AppController from "./controller.js";
+import RedirecterController from "./controller.js";
+import UrlHelper from "@/helpers/url.helper.js";
 
 export default function appRouter(fastify: FastifyInstance) {
   fastify.get("/", async (request, reply) => {
@@ -9,8 +10,15 @@ export default function appRouter(fastify: FastifyInstance) {
 
   fastify.route({
     method: "GET",
-    url: "/:shortUrl",
-    preValidation: validateShortUrlFromRequest,
-    handler: AppController.redirect,
+    url: "/r/:shortId",
+    preValidation: ShortUrlHelper.validateShortUrlFromRequest,
+    handler: RedirecterController.redirect,
+  });
+
+  fastify.route({
+    method: "POST",
+    url: "/r",
+    preValidation: UrlHelper.isValidUrlFromRequest,
+    handler: RedirecterController.create,
   });
 }

@@ -5,8 +5,10 @@ const redirecterSchema = new Schema({
     type: String,
     required: true,
   },
-  shortUrl: {
+  shortId: {
     type: String,
+    minlength: 10,
+    maxlength: 10,
     required: true,
     unique: true,
     index: true,
